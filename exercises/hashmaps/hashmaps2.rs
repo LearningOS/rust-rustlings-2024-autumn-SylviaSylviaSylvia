@@ -14,7 +14,6 @@
 // Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -40,6 +39,8 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
+        basket.entry(fruit).or_insert(1);
+        //map.entry(x).or_insert(y); ==> 如果键 x 不存在于映射中，它将被插入，并且值将被设置为 y
     }
 }
 
@@ -56,6 +57,11 @@ mod tests {
 
         basket
     }
+
+//当你对 Option 或 Result 类型的变量调用 unwrap 方法时，你实际上是在告诉 Rust：
+    //如果类型是 Option，则如果变量是 Some 变体，提取并返回内部的值；如果是 None，则程序会立即退出并显示错误信息。
+    //如果类型是 Result，则如果变量是 Ok 变体，提取并返回内部的值；如果是 Err，则同样程序会立即退出并显示错误信息。
+//unwrap 是一种快捷而方便的方式来处理可能的错误或空值，但它应该谨慎使用，因为它不提供错误处理的逻辑，而是选择在遇到错误或空值时直接使程序崩溃。
 
     #[test]
     fn test_given_fruits_are_not_modified() {

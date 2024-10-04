@@ -7,11 +7,16 @@
 // Execute `rustlings hint errors3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::num::ParseIntError;
 
-fn main() {
+
+//Rust 程序的标准返回类型:(),表示“无返回值”
+
+fn main() ->Result<(), ParseIntError> {
+//因为total_cost有概率返回Err，若返回Err，Err类型的e不能和token比较,main函数也该直接返回Err
+//? 运算符用于错误传播：如果 total_cost 返回 Ok,则 ? 运算符会提取 Ok 中的值并继续执行；
+//如果 total_cost 返回 Err，则 main 函数会立即返回这个 Err 值，并且不再继续执行后续代码
     let mut tokens = 100;
     let pretend_user_input = "8";
 
@@ -23,6 +28,7 @@ fn main() {
         tokens -= cost;
         println!("You now have {} tokens.", tokens);
     }
+    Ok(())
 }
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {

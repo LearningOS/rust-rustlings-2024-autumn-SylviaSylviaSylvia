@@ -18,11 +18,10 @@
 //
 // Execute `rustlings hint box1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, List),
+    Cons(i32, Box<List>),
     Nil,
 }
 
@@ -33,14 +32,14 @@ fn main() {
         create_non_empty_list()
     );
 }
-
+//todo!() 宏用于标记尚未完成的代码部分
 pub fn create_empty_list() -> List {
-    todo!()
-}
+    List::Nil
+}//Nil代表了空列表
 
 pub fn create_non_empty_list() -> List {
-    todo!()
-}
+    List::Cons(0,Box::new(List::Nil))
+}//Box<List>指针指向下一个元素
 
 #[cfg(test)]
 mod tests {

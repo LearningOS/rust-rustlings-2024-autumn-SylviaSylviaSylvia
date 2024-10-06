@@ -22,7 +22,9 @@ fn main() {
             start.elapsed().as_millis()
         }));
     }
-
+//thread::spawn 用于创建一个新的线程，并立即返回一个线程句柄 JoinHandle
+//handle.join()会阻塞当前线程，直到对应的子线程执行完成。子线程执行完毕后,join返回一个 Result 类型
+//unwrap 方法用于提取 join 方法的结果。unwrap() 是一个方法，用于提取 Option 或 Result 类型中的值
     let mut results: Vec<u128> = vec![];
     for handle in handles {
         // TODO: a struct is returned from thread::spawn, can you use it?

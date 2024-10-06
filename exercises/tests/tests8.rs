@@ -7,10 +7,11 @@
 // Execute `rustlings hint tests8` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 fn main() {}
-
+//cfg 是 Rust 中的 条件编译（conditional compilation） 机制的一部分
+//它允许根据编译时的配置决定哪些代码片段应该被包含或排除
+//在 Windows 上编译，#[cfg(target_os = "windows")] 对应的代码会被编译
 #[cfg(test)]
 mod tests {
     use super::*;

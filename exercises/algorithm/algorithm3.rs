@@ -3,10 +3,24 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 
-fn sort<T>(array: &mut [T]){
-	//TODO
+//T: Ord 就是一个 trait 约束，它告诉 Rust 编译器 T 必须是一个可以排序的类型。
+fn sort<T: Ord>(array: &mut [T]){
+	let len = array.len();
+    if len < 2 {
+        return; // No need to sort if the array is of length 0 or 1
+    }
+
+    let mut swapped = true;
+    while swapped {
+        swapped = false;
+        for i in 1..len {
+            if array[i - 1] > array[i] {
+                array.swap(i - 1, i);
+                swapped = true;
+            }
+        }
+    }
 }
 #[cfg(test)]
 mod tests {
